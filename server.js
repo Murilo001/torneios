@@ -55,10 +55,11 @@ app.post('/usuario/editar/:userId', (req, res) => {
  
 // Apaga usuário
 app.post('/usuario/delete/:userId', (req, res) => {
-    console.log(req.params.userId);
     deleteUser(req.params.userId, (data) => {
         if (data) {
             res.send(data);
+        } else {
+            res.send(`Usuário de ID ${req.params.userId} excluído com sucesso.`)
         }
     });
 })
