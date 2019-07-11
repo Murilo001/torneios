@@ -8,19 +8,20 @@ import {
   MatDatepickerModule,
   MatButtonModule
 } from "@angular/material";
-import { RouterModule } from "@angular/router";
 import { UsuariosListingComponent } from "./usuarios-listing/usuarios-listing.component";
+import { UsuarioRoutingModule } from "./usuarios-routing.module";
 
 @NgModule({
-  declarations: [UsuariosFormComponent, UsuariosListingComponent],
   imports: [
     CommonModule,
+    UsuarioRoutingModule,
 
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatButtonModule
-  ]
+  ],
+  declarations: [UsuariosFormComponent, UsuariosListingComponent]
 })
 export class UsuariosModule {}

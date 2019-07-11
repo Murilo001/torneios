@@ -1,1 +1,17 @@
-<p>usuarios-listing works!</p>
+<div>
+  <button matButton>Novo</button>
+</div>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let usuario of usuarios">
+    <span matLine>{{ usuario.nome }}</span>
+
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button mat-icon-button>
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
