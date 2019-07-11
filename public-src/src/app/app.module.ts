@@ -15,6 +15,7 @@ import {
 } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { UsuariosModule } from "./usuarios/usuarios.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { UsuariosModule } from "./usuarios/usuarios.module";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule,
 
     MatToolbarModule,
