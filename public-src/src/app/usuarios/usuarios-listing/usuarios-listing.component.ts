@@ -16,4 +16,8 @@ export class UsuariosListingComponent implements OnInit {
       this.usuarios = todos;
     });
   }
+
+  apagar(id: number) {
+    this._usuarioApiService.apagar(id);
+  }
 }
