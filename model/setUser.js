@@ -1,14 +1,9 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const dbPath = path.resolve(__dirname, 'model/torneio.db')
-const db = new sqlite3.Database(dbPath);
+const db = require('./db')
 
-db.run('INSERT INTO usuario(id, nome, idade, ativo) VALUES(?, ?, ?, ?)', [2, 'Mario Andrade', '10/09/2019', 1], (err) => {
-	if(err) {
-		return console.log(err.message); 
-	}
-	console.log(`Row was added to the table: ${this.lastID}`);
-})
+function salvarUsuario(dadosUsuario, callback) {
+	db.run('INSERT INTO usuario(id, nome, idade, ativo) VALUES(?, ?, ?, ?)', [dadosUsuario.id, dadosUsuario.nome, dadosUsuario.idade, dadosUsuario.ativo], (any, err) => {
+		callback(err);
+	});
+}
 
-// close the database connection
-db.close();
+module.exports = salvarUsuario;
