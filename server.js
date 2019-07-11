@@ -3,15 +3,9 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 //const bootstrap = require('bootstrap');
 const path = require('path');
-const uri = "<!-- Aqui é a url do banco -->";
+const dbPath = path.resolve(__dirname, 'model/torneio.db')
+const sqlite3 = require('sqlite3').verbose();
 const app = express();
-
-MongoClient.connect(uri, (err, client) => {
-    // ,,, START SERVER
-    app.listen(3000, function() {
-        console.log('Estou ouvindo na porta 3000');
-    })    
-})
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -47,5 +41,39 @@ app.post('/usuario/delete/:userId', (req, res) => {
 })
 
 
+let db = new sqlite3.Database(dbPath, (err) => {
+    if (err) {
+        console.error(err.message);
+    } else {
+        console.log('Connected to the torneio database.');
+    }
+});
+
+
+db.serialize(function () {
+    //db.get(`SELECT name FROM torneio WHERE type='table' AND name='usuario'`, function (err, row) {
+
+    //});
+    //db.run(`CREATE TABLE IF NOT EXISTS usuario(id INTEGER primary key, nome TEXT, idade TEXT, ativo INTEGER);`);
+    // ALL - Carrega tudo para a memória, EACH - Faz várias requisições, GET - Primeiro registro
+    db.each("SELECT id AS id, nome AS nome FROM usuario", function (err, row) {
+        if (err) {
+            console.error(err.message);    
+        } else {
+            if (row === undefined) {
+                console.log('Não encontrado.');
+            } else {
+                console.log(row.id + ": " + row.nome);
+            }
+        }
+    });
+});
+
+db.close((err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+});
 
 console.log('Esse é o servidor.');

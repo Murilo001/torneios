@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "mongodb": "^3.2.7",
-    "popper.js": "^1.14.3"
+    "popper.js": "^1.14.3",
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

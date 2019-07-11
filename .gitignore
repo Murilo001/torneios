@@ -10,7 +10,8 @@
 !.vscode/extensions.json
 
 node_modules
-
+db
+torneio.db
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
