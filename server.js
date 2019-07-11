@@ -19,12 +19,33 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
 
+// Precisa da url de cadastrar usuários, de editar, apagar, pegar por id  e listar
 app.get('/', (req, res) => {
     res.render('index.ejs')
 })
 
-app.post('/show', (req, res) => {
+// Lista todos
+app.get('/usuario', (req, res) => {
+    res.render('index.ejs')
+})
+
+// Lista por ID
+app.get('/usuario/:userId', (req, res) => {
+    console.log(`User id: ${req.params.userId}`);
+    return res.send(`User id: ${req.params.userId}`);
+    //return res.send(users[req.params.userId]);
+})
+
+//Edita usuário
+app.get('/usuario/editar/:userId', (req, res) => {
+    res.render('index.ejs')
+})
+
+// Apaga usuário
+app.post('/usuario/delete/:userId', (req, res) => {
     console.log(req.body);
 })
+
+
 
 console.log('Esse é o servidor.');
