@@ -17,7 +17,7 @@ export interface Usuario extends ApiUsuario {
   idade: Date;
 }
 
-const base = "//localhos:3000";
+const base = "//localhost:3000";
 
 @Injectable({
   providedIn: "root"
