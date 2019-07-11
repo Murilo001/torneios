@@ -1,7 +1,8 @@
 const db = require('./db')
 
 function salvarUsuario(dadosUsuario, callback) {
-	db.run('INSERT INTO usuario(id, nome, idade, ativo) VALUES(?, ?, ?, ?)', [dadosUsuario.id, dadosUsuario.nome, dadosUsuario.idade, dadosUsuario.ativo], (any, err) => {
+	db.run('INSERT INTO usuario(id, nome, idade, ativo) VALUES(?, ?, ?, ?)', [dadosUsuario.id, dadosUsuario.nome, dadosUsuario.idade, dadosUsuario.ativo], (err) => {
+		console.log(err);
 		callback(err);
 	});
 }
