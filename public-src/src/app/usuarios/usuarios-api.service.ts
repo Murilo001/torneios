@@ -23,22 +23,22 @@ export class UsuariosApiService {
   constructor() {}
 
   encontrarTodos(): Promise<Usuario[]> {
-    return null!;
+    return Promise.reject();
   }
 
   encontrarPorId(id: number): Promise<Usuario> {
-    return null!;
+    return Promise.reject();
   }
 
   cadastrar(usuario: TransienteUsuario): Promise<Usuario> {
-    return null!;
+    return Promise.reject();
   }
 
   atualizar(id: number, usuario: TransienteUsuario): Promise<Usuario> {
-    return null!;
+    return Promise.reject();
   }
 
   apagar(id: number): Promise<unknown> {
-    return null!;
+    return Promise.reject();
   }
 }

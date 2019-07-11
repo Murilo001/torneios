@@ -6,10 +6,13 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatDatepickerModule,
-  MatButtonModule
+  MatButtonModule,
+  MatListModule,
+  MatIconModule
 } from "@angular/material";
 import { UsuariosListingComponent } from "./usuarios-listing/usuarios-listing.component";
 import { UsuarioRoutingModule } from "./usuarios-routing.module";
+import { UsuariosApiService } from "./usuarios-api.service";
 
 @NgModule({
   imports: [
@@ -20,8 +23,10 @@ import { UsuarioRoutingModule } from "./usuarios-routing.module";
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatListModule,
+    MatIconModule,
     MatButtonModule
   ],
-  declarations: [UsuariosFormComponent, UsuariosListingComponent]
+  declarations: [UsuariosFormComponent, UsuariosListingComponent],
 })
 export class UsuariosModule {}
