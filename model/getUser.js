@@ -1,25 +1,26 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const dbPath = path.resolve(__dirname, 'model/torneio.db')
-let db = new sqlite3.Database(dbPath);
+const db = require('./db')
 
- 
-let sql = `SELECT id,
-                  nome
+function pegarUsuarioPorId(idUsuario, callback) {
+  console.log(idUsuario);
+  let sql = `SELECT id,
+                  nome, idade, ativo
            FROM usuario
-           WHERE id  = ?`;
-let userid = 1;
- 
-// first row only
-db.get(sql, [userid], (err, row) => {
-  if (err) {
-    return console.error(err.message);
-  }
-  return row
-    ? console.log(row.id, row.name)
-    : console.log(`No user found with the id ${userid}`);
- 
-});
- 
-// close the database connection
-db.close();
+           WHERE id = ?`;
+
+  db.each(sql, [idUsuario], (err, row) => {
+    if (err) {
+      throw err;
+    }
+    callback(row);
+  });
+
+  db.each(sql, ['USA'], (err, row) => {
+    if (err) {
+      throw err;
+    }
+    console.log(`${row.firstName} ${row.lastName} - ${row.email}`);
+  });
+
+}
+
+module.exports = pegarUsuarioPorId;
