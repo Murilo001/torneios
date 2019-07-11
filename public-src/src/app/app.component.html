@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="menu-btn" (click)="menuOpened = !menuOpened">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  Torneios
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav-menu" mode="side" [opened]="menuOpened">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/usuarios">
+        <mat-icon matListIcon>person</mat-icon>
+        <span matLine>Usuários</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
