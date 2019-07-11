@@ -4,6 +4,7 @@ const path = require('path');
 const setUser = require('./model/setUser');
 const getUser = require('./model/getUser');
 const listUser = require('./model/listUser');
+const deleteUser = require('./model/deleteUser');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -54,7 +55,12 @@ app.post('/usuario/editar/:userId', (req, res) => {
  
 // Apaga usuário
 app.post('/usuario/delete/:userId', (req, res) => {
-    console.log(req.body);
+    console.log(req.params.userId);
+    deleteUser(req.params.userId, (data) => {
+        if (data) {
+            res.send(data);
+        }
+    });
 })
 
 app.listen(3000);
