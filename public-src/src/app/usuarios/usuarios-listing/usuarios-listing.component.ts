@@ -12,12 +12,16 @@ export class UsuariosListingComponent implements OnInit {
   constructor(private readonly _usuarioApiService: UsuariosApiService) {}
 
   ngOnInit() {
-    this._usuarioApiService.encontrarTodos().then(todos => {
-      this.usuarios = todos;
-    });
+    this._loadListing();
   }
 
   apagar(id: number) {
-    this._usuarioApiService.apagar(id);
+    this._usuarioApiService.apagar(id).then(() => this._loadListing());
+  }
+
+  private _loadListing() {
+    this._usuarioApiService.encontrarTodos().then(todos => {
+      this.usuarios = todos;
+    });
   }
 }

@@ -36,8 +36,13 @@ export class UsuariosApiService {
     return Promise.reject();
   }
 
-  cadastrar(usuario: TransienteUsuario): Promise<Usuario> {
-    return Promise.reject();
+  cadastrar(usuario: TransienteUsuario): Promise<unknown> {
+    const data = new FormData();
+    data.append("nome", usuario.nome);
+    data.append("idade", usuario.idade.toISOString());
+    data.append("ativo", "1");
+
+    return this._http.post(`${base}/usuario/adicionar`, data).toPromise();
   }
 
   atualizar(id: number, usuario: TransienteUsuario): Promise<Usuario> {
@@ -45,6 +50,6 @@ export class UsuariosApiService {
   }
 
   apagar(id: number): Promise<unknown> {
-    return Promise.reject();
+    return this._http.post(`${base}/usuario/delete/${id}`, null).toPromise();
   }
 }

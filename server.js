@@ -47,7 +47,7 @@ app.post('/usuario/adicionar', (req, res) => {
         if (err) {
             res.send(`Erro ao cadastrar o usuário: ${req.body.nome}`);
         } else {
-            res.send(`Usuário ${req.body.nome} cadastrado com sucesso.`)
+            res.end();
         }
     });
 });
@@ -69,7 +69,7 @@ app.post('/usuario/delete/:userId', (req, res) => {
         if (data) {
             res.send(data);
         } else {
-            res.send(`Usuário de ID ${req.params.userId} excluído com sucesso.`)
+            res.end();
         }
     });
 })

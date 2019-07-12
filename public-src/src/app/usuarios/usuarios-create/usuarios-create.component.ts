@@ -1,15 +1,21 @@
 import { Component, OnInit } from "@angular/core";
-import { TransienteUsuario } from "../usuarios-api.service";
+import { TransienteUsuario, UsuariosApiService } from "../usuarios-api.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-usuarios-create",
   templateUrl: "./usuarios-create.component.html",
   styleUrls: ["./usuarios-create.component.scss"]
 })
-export class UsuariosCreateComponent implements OnInit {
-  constructor() {}
+export class UsuariosCreateComponent {
+  constructor(
+    private readonly _usuariosApi: UsuariosApiService,
+    private readonly _router: Router
+  ) {}
 
-  ngOnInit() {}
-
-  salvar(usuario: TransienteUsuario) {}
+  salvar(usuario: TransienteUsuario) {
+    this._usuariosApi
+      .cadastrar(usuario)
+      .then(() => this._router.navigate(["/", "usuarios"]));
+  }
 }

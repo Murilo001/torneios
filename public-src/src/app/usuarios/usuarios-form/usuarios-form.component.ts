@@ -10,12 +10,12 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 export class UsuariosFormComponent implements OnInit {
   @Input() inital?: TransienteUsuario;
 
-  @Output() submit = new EventEmitter<TransienteUsuario>();
+  @Output() conclude = new EventEmitter<TransienteUsuario>();
 
   readonly formGroup: FormGroup;
 
   constructor(private readonly _formBuilder: FormBuilder) {
-    this.formGroup = this._buildFormGroup();
+    this.formGroup = this._buildFormGroup()
   }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.submit.emit(this.formGroup.value);
+    this.conclude.emit(this.formGroup.value);
   }
 
   private _buildFormGroup() {
