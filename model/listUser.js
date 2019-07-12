@@ -4,6 +4,7 @@ function listarUsuario(req, callback) {
   let sql = `SELECT DISTINCT id,
                   nome, idade, ativo
            FROM usuario
+           WHERE ativo = 1
            ORDER BY nome`;
 
   db.all(sql, [], (err, row) => {
