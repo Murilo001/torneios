@@ -8,16 +8,24 @@ import {
   MatDatepickerModule,
   MatButtonModule,
   MatListModule,
-  MatIconModule
+  MatIconModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { UsuariosListingComponent } from "./usuarios-listing/usuarios-listing.component";
 import { UsuarioRoutingModule } from "./usuarios-routing.module";
 import { UsuariosApiService } from "./usuarios-api.service";
+import { UsuariosCreateComponent } from "./usuarios-create/usuarios-create.component";
+import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     UsuarioRoutingModule,
+    RouterModule,
+    FormsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
 
     MatSelectModule,
     MatInputModule,
@@ -27,6 +35,10 @@ import { UsuariosApiService } from "./usuarios-api.service";
     MatIconModule,
     MatButtonModule
   ],
-  declarations: [UsuariosFormComponent, UsuariosListingComponent],
+  declarations: [
+    UsuariosFormComponent,
+    UsuariosListingComponent,
+    UsuariosCreateComponent
+  ]
 })
 export class UsuariosModule {}

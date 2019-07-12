@@ -1,18 +1,19 @@
-<form>
-  <mat-form-field>
-    <input type="text" placeholder="Nome" matInput />
+<form class="form" [formGroup]="formGroup">
+  <mat-form-field class="form__field">
+    <input type="text" formControlName="nome" placeholder="Nome" matInput />
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="form__field">
     <input
       type="text"
       placeholder="Idade"
+      formControlName="idade"
       matInput
-      matDatepicker="datepickerNiver"
+      [matDatepicker]="dp"
     />
-    <mat-datepicker-toggle [for]="datepickerNiver"></mat-datepicker-toggle>
-    <mat-datepicker #datepickerNiver></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
   </mat-form-field>
 
-  <button matButton color="primary" type="submit">Salvar</button>
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
 </form>
