@@ -4,6 +4,7 @@ const path = require('path');
 const setUser = require('./model/setUser');
 const getUser = require('./model/getUser');
 const listUser = require('./model/listUser');
+const updateUser = require('./model/updateUser');
 const cors = require('cors');
 const deleteUser = require('./model/deleteUser');
 const app = express();
@@ -52,8 +53,14 @@ app.post('/usuario/adicionar', (req, res) => {
 });
 
 //Edita usuário
-app.post('/usuario/editar/:userId', (req, res) => {
-    res.render('index.ejs')
+app.post('/usuario/update/:userId', (req, res) => {
+    updateUser(req.params.userId, req.body, (data) => {
+        if (data) {
+            res.send(data);
+        } else {
+            res.send(`Usuário de ID ${req.body.nome} alterado com sucesso.`)
+        }
+    });
 })
  
 // Apaga usuário
