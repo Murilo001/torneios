@@ -1,26 +1,32 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { TransienteUsuario } from "../usuarios-api.service";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TransienteUsuario } from '../usuarios-api.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: "app-usuarios-form",
-  templateUrl: "./usuarios-form.component.html",
-  styleUrls: ["./usuarios-form.component.scss"]
+  selector: 'app-usuarios-form',
+  templateUrl: './usuarios-form.component.html',
+  styleUrls: ['./usuarios-form.component.scss'],
 })
 export class UsuariosFormComponent implements OnInit {
-  @Input() inital?: TransienteUsuario;
+
+  @Input() initial?: Readonly<TransienteUsuario>;
 
   @Output() conclude = new EventEmitter<TransienteUsuario>();
 
   readonly formGroup: FormGroup;
 
   constructor(private readonly _formBuilder: FormBuilder) {
-    this.formGroup = this._buildFormGroup()
+    this.formGroup = this._buildFormGroup();
   }
 
   ngOnInit() {
-    if (this.inital) {
-      this.formGroup.setValue(this.inital);
+    const { initial } = this;
+
+    if (initial) {
+      this.formGroup.setValue({
+        nome: initial.nome,
+        idade: initial.idade,
+      });
     }
   }
 
@@ -31,7 +37,7 @@ export class UsuariosFormComponent implements OnInit {
   private _buildFormGroup() {
     return this._formBuilder.group({
       nome: [],
-      idade: []
+      idade: [],
     });
   }
 }

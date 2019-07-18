@@ -1,22 +1,23 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { UsuariosFormComponent } from "./usuarios-form/usuarios-form.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UsuariosFormComponent } from './usuarios-form/usuarios-form.component';
 import {
-  MatSelectModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatDatepickerModule,
   MatButtonModule,
-  MatListModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatNativeDateModule
-} from "@angular/material";
-import { UsuariosListingComponent } from "./usuarios-listing/usuarios-listing.component";
-import { UsuarioRoutingModule } from "./usuarios-routing.module";
-import { UsuariosApiService } from "./usuarios-api.service";
-import { UsuariosCreateComponent } from "./usuarios-create/usuarios-create.component";
-import { RouterModule } from "@angular/router";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatSelectModule,
+} from '@angular/material';
+import { UsuariosListingComponent } from './usuarios-listing/usuarios-listing.component';
+import { UsuarioRoutingModule } from './usuarios-routing.module';
+import { UsuariosCreateComponent } from './usuarios-create/usuarios-create.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuariosEditComponent } from './usuarios-edit/usuarios-edit.component';
 
 @NgModule({
   imports: [
@@ -33,12 +34,14 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
     MatDatepickerModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
   ],
   declarations: [
     UsuariosFormComponent,
     UsuariosListingComponent,
-    UsuariosCreateComponent
-  ]
+    UsuariosCreateComponent,
+    UsuariosEditComponent,
+  ],
 })
 export class UsuariosModule {}

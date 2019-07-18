@@ -1,15 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { Usuario, UsuariosApiService } from "../usuarios-api.service";
+import { Component, OnInit } from '@angular/core';
+import { Usuario, UsuariosApiService } from '../usuarios-api.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-usuarios-listing",
-  templateUrl: "./usuarios-listing.component.html",
-  styleUrls: ["./usuarios-listing.component.scss"]
+  selector: 'app-usuarios-listing',
+  templateUrl: './usuarios-listing.component.html',
+  styleUrls: ['./usuarios-listing.component.scss'],
 })
 export class UsuariosListingComponent implements OnInit {
+
   usuarios: Usuario[] = [];
 
-  constructor(private readonly _usuarioApiService: UsuariosApiService) {}
+  constructor(
+    private readonly _usuarioApiService: UsuariosApiService,
+    private readonly _router: Router,
+  ) {
+  }
 
   ngOnInit() {
     this._loadListing();
@@ -17,6 +23,10 @@ export class UsuariosListingComponent implements OnInit {
 
   apagar(id: number) {
     this._usuarioApiService.apagar(id).then(() => this._loadListing());
+  }
+
+  editar(id: number) {
+    this._router.navigate(['/usuarios/edit', id]);
   }
 
   private _loadListing() {

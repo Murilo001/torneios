@@ -1,0 +1,7 @@
+<mat-card class="card">
+  <span *ngIf="!usuario; else form">Carregando...</span>
+
+  <ng-template #form>
+    <app-usuarios-form [initial]="usuario" (conclude)="editar($event)"></app-usuarios-form>
+  </ng-template>
+</mat-card>
